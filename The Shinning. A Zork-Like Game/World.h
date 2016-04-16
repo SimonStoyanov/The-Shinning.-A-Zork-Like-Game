@@ -1,3 +1,9 @@
+#ifndef WORLD_H
+#define WORLD_H
+
+#include "p2String.h"
+#include "p2Vector.h"
+
 #include "Entity.h"
 #include "Player.h"
 

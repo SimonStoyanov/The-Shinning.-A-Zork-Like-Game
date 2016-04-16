@@ -1,6 +1,8 @@
+#include <iostream>
 #include "World.h"
 #include "Room.h"
 #include "Player.h"
+#include "Exit.h"
 
 // Constructor
 World::World(){
@@ -39,15 +41,22 @@ World::World(){
 	entities.push_back(TheUnderground);	entities.push_back(Maze1);			entities.push_back(Maze2);		entities.push_back(Maze3);
 	entities.push_back(End);
 
+	// Exits
+	Exit* _YourRoom = new Exit("down", "up", "stairs", YourRoom, LivingRoom);
+	Exit* _LivingRoom = new Exit("out", "in", "door", LivingRoom, Galia, true);
+
+	entities.push_back(_YourRoom);		entities.push_back(_LivingRoom);
+
 	// Player
 	player = new Player("Aisu", "An 18 year old that is looking for the truth", YourRoom);
+
 	entities.push_back(player);
 }
 // Destructor
 World::~World(){
-	uint i = 0;
-	for (Entity* it = entities[i]; it != entities[entities.size()]; ++i)
-		delete it;
+	for (int i = 0; i >= entities.size();){
+		entities.pop_back();
+	}
 
 	entities.clear();
 }
@@ -57,6 +66,7 @@ void World::Game_Loop(){
 
 	// Init
 	p2String player_input;
+	char input_aux[25];
 	p2Vector<p2String> commands;
 	commands.reserve(10);
 
@@ -66,7 +76,20 @@ void World::Game_Loop(){
 	printf("   > n, s, e, w, i, o, d & up (respectively to the upper commands)\n");
 	printf("   > open, close\n\n");
 
+	commands.push_back("look");
 
+	while (player_input != "quit"){
+		scanf_s("%s", &input_aux, 25);
+		player_input = input_aux;
+
+		player_input.Tokenize(' ', commands);
+	
+
+
+		Command(commands);
+	}
+
+	
 }
 
 bool World::Command(p2Vector<p2String>& commands){
@@ -77,6 +100,9 @@ bool World::Command(p2Vector<p2String>& commands){
 	{
 		if ((commands[0] == "look") || (commands[0] == "l")){
 			player->Look(commands);
+		}
+		if ((commands[0] == "quit") || (commands[0] == "q")){
+			ret = false;
 		}
 	}
 	default:

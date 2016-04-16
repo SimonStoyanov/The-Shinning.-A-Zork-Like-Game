@@ -22,8 +22,9 @@ private:
 	// Parameters
 	p2String name;
 	p2String description;
-	Entity* parent;
 public:
+	// Parent
+	Entity* parent;
 	// Type
 	EntityType type = ENTITY;
 	// Vector
@@ -37,9 +38,8 @@ public:
 	const p2String getName();
 	const p2String getDescription();
 	const EntityType getType();
-
 	virtual void Look();
-
+	
 };
 
 #endif

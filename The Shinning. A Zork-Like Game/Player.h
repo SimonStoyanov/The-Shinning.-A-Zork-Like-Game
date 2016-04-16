@@ -9,7 +9,7 @@ public:
 	Player(const p2String name, const p2String description, Room* room);
 	~Player();
 
-	void Look(const p2Vector<p2String>& commands) const;
+	void Look(p2Vector<p2String>& commands) const;
 };
 
 #endif

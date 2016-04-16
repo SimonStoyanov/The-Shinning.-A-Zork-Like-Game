@@ -4,6 +4,8 @@
 #include "Entity.h"
 #include "Room.h"
 
+class Room;
+
 class Exit : public Entity{
 private:
 	bool one_way;
