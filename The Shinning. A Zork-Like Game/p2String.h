@@ -86,7 +86,7 @@ public:
 	void push_back(const char c){
 		char* temp = new char[max_size];
 		strcpy_s(temp, max_size, string);
-		delete[] string;
+		delete[] this->string;
 		*(temp + max_size - 1) = '\0';
 		*(temp + max_size - 2) = c;
 		string = temp;

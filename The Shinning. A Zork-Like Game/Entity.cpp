@@ -1,7 +1,7 @@
 #include "Entity.h"
 
 // Constructor
-Entity::Entity(const p2String name, const p2String description, Entity* parent) :
+Entity::Entity(const char* name, const char* description, Entity* parent) :
 name(name), description(description), parent(parent)
 {
 	type = ENTITY;

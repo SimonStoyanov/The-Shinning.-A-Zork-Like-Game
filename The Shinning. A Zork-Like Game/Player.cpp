@@ -1,8 +1,7 @@
 #include "Player.h"
 #include "Exit.h"
 
-Player::Player(const p2String name, const p2String description, Room* room) :
-Entity(name, description, (Entity*)room)
+Player::Player(const char* name, const char* description, Room* room) : Entity(name, description, room)
 {
 	type = PLAYER;
 }

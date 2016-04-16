@@ -31,7 +31,7 @@ public:
 	p2Vector<Entity*> entities;
 
 	// Constructor
-	Entity(const p2String name, const p2String description, Entity* parent);
+	Entity(const char* name, const char* description, Entity* parent);
 	// Destructor
 	virtual ~Entity();
 	//Methods

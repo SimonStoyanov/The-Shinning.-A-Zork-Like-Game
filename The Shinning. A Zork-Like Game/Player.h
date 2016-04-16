@@ -6,7 +6,8 @@
 
 class Player : public Entity{
 public:
-	Player(const p2String name, const p2String description, Room* room);
+	Player() : Entity("a", "ab", nullptr){};
+	Player(const char* name, const char* description, Room* room);
 	~Player();
 
 	void Look(p2Vector<p2String>& commands) const;

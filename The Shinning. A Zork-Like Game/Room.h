@@ -5,7 +5,7 @@
 
 class Room : public Entity{
 public:
-	Room(const p2String name, const p2String description);
+	Room(const char* name, const char* description);
 	~Room();
 
 	void Look() const;

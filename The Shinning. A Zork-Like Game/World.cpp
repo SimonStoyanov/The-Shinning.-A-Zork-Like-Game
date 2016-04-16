@@ -42,10 +42,11 @@ World::World(){
 	entities.push_back(End);
 
 	// Exits
-	Exit* _YourRoom = new Exit("down", "up", "stairs", YourRoom, LivingRoom);
-	Exit* _LivingRoom = new Exit("out", "in", "door", LivingRoom, Galia, true);
+	//Exit* _YourRoom = new Exit("down", "up", "stairs", YourRoom, LivingRoom);
+	//Exit* _LivingRoom = new Exit("out", "in", "door", LivingRoom, Galia, true);
 
-	entities.push_back(_YourRoom);		entities.push_back(_LivingRoom);
+
+	//entities.push_back(_YourRoom);		entities.push_back(_LivingRoom);
 
 	// Player
 	player = new Player("Aisu", "An 18 year old that is looking for the truth", YourRoom);

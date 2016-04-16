@@ -1,7 +1,7 @@
 #include "Room.h"
 #include "Entity.h"
 
-Room::Room(const p2String title, const p2String description) : Entity(title, description, NULL){
+Room::Room(const char* title, const char* description) : Entity(title, description, nullptr){
 	type = ROOM;
 }
 

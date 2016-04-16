@@ -4,7 +4,7 @@
 #define uint unsigned int
 #define BLOCK 16
 
-#include <assert.h>
+#include <string.h>
 
 template <class TYPE>
 class p2Vector{
@@ -19,11 +19,11 @@ public:
 		buffer = new TYPE[capacity];
 	}
 
-	p2Vector(const p2Vector& v){
+	p2Vector(p2Vector& v){
 		capacity = v.capacity;
 		buffer = new TYPE[v.capacity];
 		num_elements = v.num_elements;
-		for (uint i = 0; i < num_elements; i++) buffer[i] = v.buffer[i];
+		memcpy(buffer, v.buffer, capacity*sizeof(TYPE));
 	}
 
 	p2Vector(uint size) :
@@ -53,13 +53,12 @@ public:
 		}
 	}
 	void push_back(const TYPE& num){
-		TYPE* aux;
 		if (num_elements == capacity){
 			capacity += 10;
-			TYPE* aux = new TYPE[capacity];
-			for (int i = 0; i < num_elements; i++) aux[i] = buffer[i];
+			p2Vector<TYPE> aux(*this);
+			
 			delete[] buffer;
-			buffer = aux;
+			memcpy(buffer, aux.buffer, capacity*sizeof(TYPE));
 		}
 
 		buffer[num_elements] = num;
