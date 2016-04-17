@@ -10,6 +10,14 @@ name(name), description(description), parent(parent)
 	if (parent != NULL)
 		parent->entities.push_back(this);
 }
+Entity::Entity(const char* name, const char* description) :
+name(name), description(description)
+{
+	type = ENTITY;
+
+	if (parent != NULL)
+		parent->entities.push_back(this);
+}
 // Destructor
 Entity::~Entity(){};
 

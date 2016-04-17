@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Exit.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="p2String.h" />
     <ClInclude Include="p2Vector.h" />
     <ClInclude Include="Player.h" />
@@ -26,6 +27,7 @@
     <ClCompile Include="MemLeaks.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -146,7 +146,7 @@ World::World(){
 	entities.push_back(Maze3_Maze2);
 
 	// Player
-	player = new Player("Aisu", "An 18 year old that is looking for the truth", TheUnderground);
+	player = new Player("Aisu", "An 18 year old that is looking for the truth", YourRoom);
 
 	entities.push_back(player);
 }
@@ -251,18 +251,103 @@ bool World::Command(p2Vector<p2String>& commands){
 			player->Go(commands);
 			player->Look(commands);
 		}
-		if (commands[0] == "out"){
+		if (commands[0] == "outside" || commands[0] == "out"){
+			commands[0] = "out";
 			player->Go(commands);
 			player->Look(commands);
 		}
-		if (commands[0] == "in"){
+		if (commands[0] == "inside" || commands[0] == "in"){
+			commands[0] == "in";
 			player->Go(commands);
+			player->Look(commands);
+		}
+		else if (commands[0] == "i" || commands[0] == "inventory"){
+			commands[0] = "inventory";
 			player->Look(commands);
 		}
 		break;
 	}
 	case 2:
 	{
+		if (commands[0] == "go"){
+			if (commands[1] == "north" || commands[1] == "n"){
+				commands[1] = "north";
+			}
+			else if (commands[1] == "south" || commands[1] == "s"){
+				commands[1] = "south";
+			}
+			else if (commands[1] == "east" || commands[1] == "e"){
+				commands[1] = "east";
+			}
+			else if (commands[1] == "west" || commands[1] == "w"){
+				commands[1] = "west";
+			}
+			else if (commands[1] == "northeast" || commands[1] == "ne"){
+				commands[1] = "northeast";
+			}
+			else if (commands[1] == "northwest" || commands[1] == "nw"){
+				commands[1] = "northwest";
+			}
+			else if (commands[1] == "southeast" || commands[1] == "se"){
+				commands[1] = "southeast";
+			}
+			else if (commands[1] == "southwest" || commands[1] == "sw"){
+				commands[1] = "southwest";
+			}
+			else if (commands[1] == "inside" || commands[1] == "in"){
+				commands[1] = "in";
+			}
+			else if (commands[1] == "outside" || commands[1] == "out"){
+				commands[1] = "out";
+			}
+			if (commands[1] == "down" || commands[1] == "d"){
+				commands[1] = "down";
+			}
+			else if (commands[1] == "up" || commands[1] == "u"){
+				commands[1] = "up";
+			}
+			player->Go(commands);
+			player->Look(commands);
+		}
+		else if (commands[0] == "open" || commands[0] == "close"){
+			if (commands[1] == "north" || commands[1] == "n"){
+				commands[1] = "north";
+			}
+			else if (commands[1] == "south" || commands[1] == "s"){
+				commands[1] = "south";
+			}
+			else if (commands[1] == "east" || commands[1] == "e"){
+				commands[1] = "east";
+			}
+			else if (commands[1] == "west" || commands[1] == "w"){
+				commands[1] = "west";
+			}
+			else if (commands[1] == "northeast" || commands[1] == "ne"){
+				commands[1] = "northeast";
+			}
+			else if (commands[1] == "northwest" || commands[1] == "nw"){
+				commands[1] = "northwest";
+			}
+			else if (commands[1] == "southeast" || commands[1] == "se"){
+				commands[1] = "southeast";
+			}
+			else if (commands[1] == "southwest" || commands[1] == "sw"){
+				commands[1] = "southwest";
+			}
+			else if (commands[1] == "inside" || commands[1] == "in"){
+				commands[1] = "in";
+			}
+			else if (commands[1] == "outside" || commands[1] == "out"){
+				commands[1] = "out";
+			}
+			if (commands[1] == "down" || commands[1] == "d"){
+				commands[1] = "down";
+			}
+			else if (commands[1] == "up" || commands[1] == "u"){
+				commands[1] = "up";
+			}
+			player->ChangeDoor(commands);
+		}
 		break;
 	}
 	default:

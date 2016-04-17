@@ -32,6 +32,7 @@ public:
 
 	// Constructor
 	Entity(){};
+	Entity(const char* name, const char* description);
 	Entity(const char* name, const char* description, Entity* parent);
 	// Destructor
 	virtual ~Entity();

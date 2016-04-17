@@ -7,21 +7,24 @@ class Room;
 
 class Exit : public Entity{
 private:
-	bool one_way;
 	bool closed;
 	bool locked;
+	Room* origin;
 	Room* destination;
 	Entity* key;
 public:
 	// Constructor and Destructor
-	Exit(const char* name, const char* description, Room* origin, Room* destination, bool one_way = false);
+	Exit(const char* name, const char* description, Room* origin, Room* destination, bool closed = false);
 	~Exit();
 	// Methods
-	bool get_OneWay(){ return one_way; }
-	bool ger_Close(){ return closed; }
+	bool get_Close(){ return closed; }
 	bool get_Locked(){ return locked; }
 	Room* get_Destination(){ return destination; }
+	Room* get_Origin(){ return origin; }
 	Entity* get_Key(){ return key; }
+
+	void CloseDoor(){ closed = true; }
+	void OpenDoor(){ closed = false; }
 };
 
 

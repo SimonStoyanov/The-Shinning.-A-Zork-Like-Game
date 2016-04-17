@@ -1,12 +1,12 @@
 #include "Exit.h"
 
-Exit::Exit(const char* name, const char* description, Room* origin, Room* _destination, bool one_way) :
+Exit::Exit(const char* name, const char* description, Room* origin, Room* _destination, bool closed) :
 	Entity(name, description, (Entity*)origin),
+	origin(origin),
+	closed(closed),
 	destination(_destination),
-	closed(false),
 	locked(false),
-	key(NULL),
-	one_way(one_way)
+	key(NULL)
 	{
 		type = EXIT;
 	}
