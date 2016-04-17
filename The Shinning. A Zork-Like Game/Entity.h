@@ -31,15 +31,17 @@ public:
 	p2Vector<Entity*> entities;
 
 	// Constructor
+	Entity(){};
 	Entity(const char* name, const char* description, Entity* parent);
 	// Destructor
 	virtual ~Entity();
 	//Methods
-	const p2String getName();
-	const p2String getDescription();
+	p2String getName();
+	p2String getDescription();
 	const EntityType getType();
-	virtual void Look();
-	
 };
+
+class World;
+extern World* myWorld;
 
 #endif

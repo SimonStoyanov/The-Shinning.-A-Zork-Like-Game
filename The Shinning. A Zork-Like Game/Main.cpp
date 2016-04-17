@@ -1,10 +1,13 @@
 #include <iostream>
 #include "World.h"
+#include "Entity.h"
+
+World* myWorld = nullptr;
 
 int main(){
 
-	World my_world;
-	my_world.Game_Loop();
+	myWorld = new World;
+	myWorld->Game_Loop();
 
 	system("pause");
 	return 0;

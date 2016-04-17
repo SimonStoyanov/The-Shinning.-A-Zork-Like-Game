@@ -1,4 +1,3 @@
-#include <iostream>
 #include "World.h"
 #include "Room.h"
 #include "Player.h"
@@ -41,15 +40,113 @@ World::World(){
 	entities.push_back(TheUnderground);	entities.push_back(Maze1);			entities.push_back(Maze2);		entities.push_back(Maze3);
 	entities.push_back(End);
 
-	// Exits
-	//Exit* _YourRoom = new Exit("down", "up", "stairs", YourRoom, LivingRoom);
-	//Exit* _LivingRoom = new Exit("out", "in", "door", LivingRoom, Galia, true);
+	//Exits
+	Exit* YourRoom_LivingRoom = new Exit("down", "stairs", YourRoom, LivingRoom);
+	Exit* LivingRoom_YourRoom = new Exit("up", "stairs", LivingRoom, YourRoom);
+	Exit* LivingRoom_Galia = new Exit("out", "door", LivingRoom, Galia, true);
+	Exit* Galia_LivingRoom = new Exit("in", "door", Galia, LivingRoom);
+	Exit* Galia_Meadow1 = new Exit("east", "eastern gate", Galia, Meadow1);
+	Exit* Galia_Mountains1 = new Exit("south", "southern gate", Galia, Mountains1);
+	
+	Exit* Mountains1_Galia = new Exit("north", "southern gate", Mountains1, Galia);
+	Exit* Mountains1_Mountains2 = new Exit("west", "hilly trail", Mountains1, Mountains2);
+	Exit* Mountains1_ValSarE = new Exit("south", "ValSar Entrance", Mountains1, ValSar_e);
+	Exit* Mountains1_Mountains3 = new Exit("east", "hilly trail", Mountains1, Mountains3);
+	Exit* Mountains2_Galia = new Exit("northeast", "path to Galia", Mountains2, Galia);
+	Exit* Mountains2_Galia_AV = new Exit("north", "path to Galia", Mountains2, Galia);
+	Exit* Mountains2_Mountains1 = new Exit("east", "hilly trail", Mountains2, Mountains1);
+	Exit* Mountains3_Galia = new Exit("northwest", "pah to Galia", Mountains3, Galia);
+	Exit* Mountains3_Galia_AV = new Exit("north", "path to Galia", Mountains3, Galia);
+	Exit* Mountains3_Mountains1 = new Exit("west", "hilly trail", Mountains3, Mountains1);
+	
+	Exit* ValSarE_Mountains1 = new Exit("north", "ValSar Entrance", ValSar_e, Mountains1);
+	Exit* ValSarE_ValSarC = new Exit("south", "tight passage", ValSar_e, ValSar_c);
+	Exit* ValSarC_ValSarE = new Exit("north", "tight passage", ValSar_c, ValSar_e);
+	Exit* ValSarC_TheGreatSea = new Exit("south", "the cave", ValSar_c, TheGreatSea);
+	Exit* ValSarC_TheGreatSea_AV = new Exit("southeast", "the cave", ValSar_c, TheGreatSea);
+	Exit* ValSarC_TheGreatSea_AV2 = new Exit("southwest", "the cave", ValSar_c, TheGreatSea);
+	Exit* TheGreatSea_ValSarC = new Exit("northeast",  "the cave", TheGreatSea, ValSar_c);
+	Exit* TheGreatSea_ValSarC_AV = new Exit("northwest", "the cave", TheGreatSea, ValSar_c);
+	Exit* TheGreatSea_ValSarC_AV2 = new Exit("north", "the cave", TheGreatSea, ValSar_c);
 
+	Exit* Meadow1_Galia = new Exit("west", "eastern gate", Meadow1, Galia);
+	Exit* Meadow1_Meadow2 = new Exit("northwest", "meadow", Meadow1, Meadow2);
+	Exit* Meadow1_Meadow3 = new Exit("north", "meadow", Meadow1, Meadow3);
+	Exit* Meadow1_Meadow3_AV = new Exit("northeast", "meadow", Meadow1, Meadow3);
+	Exit* Meadow2_Meadow1 = new Exit("southeast", "meadow", Meadow2, Meadow1);
+	Exit* Meadow2_Meadow3 = new Exit("east", "meadow", Meadow2, Meadow3);
+	Exit* Meadow3_Meadow1 = new Exit("south", "meadow", Meadow3, Meadow1);
+	Exit* Meadow3_Meadow1_AV = new Exit("southwest", "meadow", Meadow3, Meadow1);
+	Exit* Meadow3_Meadow2 = new Exit("west", "meadow", Meadow3, Meadow2);
+	Exit* Meadow3_Lake = new Exit("north", "meadow", Meadow3, Lake);
 
-	//entities.push_back(_YourRoom);		entities.push_back(_LivingRoom);
+	Exit* Lake_Bay = new Exit("northeast", "Lake", Lake, Bay);
+	Exit* Lake_STower = new Exit("north", "hill", Lake, STower);
+	Exit* Lake_Meadow3 = new Exit("southeast", "meadow", Lake, Meadow3);
+	Exit* Lake_Meadow3_AV = new Exit("south", "meadow", Lake, Meadow3);
+	Exit* Bay_Lake = new Exit("southwest", "bay", Bay, Lake);
+	Exit* Bay_BigRockD = new Exit("north", "big rock", Bay, BigRock_d);
+	Exit* BigRockD_Bay = new Exit("south", "big rock", BigRock_d, Bay);
+	Exit* BigRockU_BigRockD = new Exit("down", "big rock", BigRock_u, BigRock_d);
+	Exit* BigRockU_ETower = new Exit("north", "big rock", BigRock_u, ETower);
+
+	Exit* STower_ETower = new Exit("east", "", STower, ETower);
+	Exit* STower_WTower = new Exit("west", "", STower, WTower);
+	Exit* STower_Lake = new Exit("south", "lake", STower, Lake);
+	Exit* WTower_NTower = new Exit("north", "", WTower, NTower);
+	Exit* WTower_Maze1 = new Exit("northwest", "", WTower, Maze1);
+	Exit* WTower_STower = new Exit("south", "", WTower, STower);
+	Exit* ETower_NTower = new Exit("north", "", ETower, NTower);
+	Exit* ETower_Maze1 = new Exit("northeast", "", ETower, Maze1);
+	Exit* ETower_STower = new Exit("south", "", ETower, STower);
+	Exit* ETower_BigRockU = new Exit("southwest", "", ETower, BigRock_u);
+	Exit* ETower_BigRockU_AV = new Exit("southeast", "", ETower, BigRock_u);
+	Exit* NTower_WTower = new Exit("west", "", NTower, WTower);
+	Exit* NTower_ETower = new Exit("east", "", NTower, ETower);
+	Exit* NTower_TheUnderGround = new Exit("north", "entrance to the Underground", NTower, TheUnderground);
+	Exit* TheUnderground_End = new Exit("north", "", TheUnderground, End);
+
+	Exit* Maze1_ETower = new Exit("west", "", Maze1, ETower);
+	Exit* Maze1_Maze2 = new Exit("northwest", "", Maze1, Maze2);
+	Exit* Maze1_Maze3 = new Exit("north", "", Maze1, Maze3);
+	Exit* Maze2_Maze1 = new Exit("north", "", Maze2, Maze1);
+	Exit* Maze2_Maze3 = new Exit("northwest", "", Maze2, Maze3);
+	Exit* Maze3_Maze1 = new Exit("southeast", "", Maze3, Maze1);
+	Exit* Maze3_Maze2 = new Exit("south", "", Maze3, Maze2);
+
+	entities.push_back(YourRoom_LivingRoom);	entities.push_back(LivingRoom_YourRoom);	entities.push_back(LivingRoom_Galia);
+	entities.push_back(Galia_LivingRoom);		entities.push_back(Galia_Meadow1);			entities.push_back(Galia_Mountains1);			
+	
+	entities.push_back(Mountains1_Galia);		entities.push_back(Mountains1_Mountains2);	entities.push_back(Mountains1_ValSarE);
+	entities.push_back(Mountains1_Mountains3);	entities.push_back(Mountains2_Galia);		entities.push_back(Mountains2_Galia_AV);	
+	entities.push_back(Mountains2_Mountains1);	entities.push_back(Mountains3_Galia);		entities.push_back(Mountains3_Galia_AV);	
+	entities.push_back(Mountains3_Mountains1);
+			
+	entities.push_back(ValSarE_Mountains1);		entities.push_back(ValSarE_ValSarC);		entities.push_back(ValSarC_ValSarE);
+	entities.push_back(ValSarC_TheGreatSea);	entities.push_back(ValSarC_TheGreatSea_AV); entities.push_back(ValSarC_TheGreatSea_AV2);
+	entities.push_back(TheGreatSea_ValSarC);	entities.push_back(TheGreatSea_ValSarC_AV);	entities.push_back(TheGreatSea_ValSarC_AV2);
+
+	entities.push_back(Meadow1_Galia);			entities.push_back(Meadow1_Meadow2);		entities.push_back(Meadow1_Meadow3);
+	entities.push_back(Meadow1_Meadow3_AV); 	entities.push_back(Meadow2_Meadow1);		entities.push_back(Meadow2_Meadow3);
+	entities.push_back(Meadow3_Meadow1);		entities.push_back(Meadow3_Meadow1_AV);		entities.push_back(Meadow3_Meadow2);
+	entities.push_back(Meadow3_Lake);
+
+	entities.push_back(Lake_Bay);				entities.push_back(Lake_STower);			entities.push_back(Lake_Meadow3);				
+	entities.push_back(Lake_Meadow3_AV);		entities.push_back(Bay_Lake);				entities.push_back(Bay_BigRockD);
+	entities.push_back(BigRockD_Bay);			entities.push_back(BigRockU_BigRockD);		entities.push_back(BigRockU_ETower);
+
+	entities.push_back(STower_ETower);			entities.push_back(STower_WTower);			entities.push_back(STower_Lake); 
+	entities.push_back(WTower_NTower);			entities.push_back(WTower_Maze1);			entities.push_back(WTower_STower); 
+	entities.push_back(ETower_NTower);			entities.push_back(ETower_Maze1);			entities.push_back(ETower_STower);
+	entities.push_back(ETower_BigRockU);		entities.push_back(ETower_BigRockU_AV);		entities.push_back(NTower_WTower);
+	entities.push_back(NTower_ETower);			entities.push_back(NTower_TheUnderGround);	entities.push_back(TheUnderground_End);
+
+	entities.push_back(Maze1_ETower);			entities.push_back(Maze1_Maze2);			entities.push_back(Maze1_Maze3);
+	entities.push_back(Maze2_Maze1);			entities.push_back(Maze2_Maze3);			entities.push_back(Maze3_Maze1);
+	entities.push_back(Maze3_Maze2);
 
 	// Player
-	player = new Player("Aisu", "An 18 year old that is looking for the truth", YourRoom);
+	player = new Player("Aisu", "An 18 year old that is looking for the truth", TheUnderground);
 
 	entities.push_back(player);
 }
@@ -59,7 +156,6 @@ World::~World(){
 		entities.pop_back();
 	}
 
-	entities.clear();
 }
 // Methods
 void World::Game_Loop(){
@@ -69,25 +165,27 @@ void World::Game_Loop(){
 	p2String player_input;
 	char input_aux[25];
 	p2Vector<p2String> commands;
-	commands.reserve(10);
 
 	//The Game
 	printf("Welcome to The Shinning! Before playing you may consider read the text \nbellow so you can play freely");
 	printf("    (all commands should be in lower case and they must be one word)\n\nSimple movement commands:\n   > north, south, east, west, in, out, down & up\n");
 	printf("   > n, s, e, w, i, o, d & up (respectively to the upper commands)\n");
 	printf("   > open, close\n\n");
-
-	commands.push_back("look");
-
-	while (player_input != "quit"){
-		scanf_s("%s", &input_aux, 25);
-		player_input = input_aux;
-
-		player_input.Tokenize(' ', commands);
 	
-
-
+	player->Look(commands);
+	while (1 ){
+		p2Vector<p2String> commands;
+		printf("> ");
+		fgets(input_aux, 25, stdin);
+		player_input = input_aux;
+	
+		player_input.Tokenize(' ', commands);
+		
 		Command(commands);
+
+		if (commands[0] == "quit" || player->parent->getName() == "Thank you for playing The Shinning"){
+			break;
+		}
 	}
 
 	
@@ -102,9 +200,70 @@ bool World::Command(p2Vector<p2String>& commands){
 		if ((commands[0] == "look") || (commands[0] == "l")){
 			player->Look(commands);
 		}
-		if ((commands[0] == "quit") || (commands[0] == "q")){
-			ret = false;
+		// Directions | Movement
+		if ((commands[0] == "north") || (commands[0] == "n")){
+			commands[0] = "north";
+			player->Go(commands);
+			player->Look(commands);
 		}
+		if ((commands[0] == "south") || (commands[0] == "s")){
+			commands[0] = "south";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if ((commands[0] == "east") || (commands[0] == "e")){
+			commands[0] = "east";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if ((commands[0] == "west") || (commands[0] == "w")){
+			commands[0] = "west";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if ((commands[0] == "northeast") || (commands[0] == "ne")){
+			commands[0] = "northeast";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if ((commands[0] == "northwest") || (commands[0] == "nw")){
+			commands[0] = "northwest";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if ((commands[0] == "southeast") || (commands[0] == "se")){
+			commands[0] = "southeast";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if ((commands[0] == "southwest") || (commands[0] == "sw")){
+			commands[0] = "southwest";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if ((commands[0] == "down") || (commands[0] == "d")){
+			commands[0] = "down";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if ((commands[0] == "up") || (commands[0] == "u")){
+			commands[0] = "up";
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if (commands[0] == "out"){
+			player->Go(commands);
+			player->Look(commands);
+		}
+		if (commands[0] == "in"){
+			player->Go(commands);
+			player->Look(commands);
+		}
+		break;
+	}
+	case 2:
+	{
+		break;
 	}
 	default:
 		ret = false;

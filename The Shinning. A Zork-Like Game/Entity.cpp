@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "World.h"
 
 // Constructor
 Entity::Entity(const char* name, const char* description, Entity* parent) :
@@ -13,19 +14,15 @@ name(name), description(description), parent(parent)
 Entity::~Entity(){};
 
 // Get Entity Name
-const p2String Entity::getName(){
+p2String Entity::getName(){
 	return name;
 }
 // Get Entity Description
-const p2String Entity::getDescription(){
+p2String Entity::getDescription(){
 	return description;
 }
 // Get Entity Type
 const EntityType Entity::getType(){
 	return type;
 }
-// Print Entity's Name and Description
-void Entity::Look(){
-	printf("%s\n", name);
-	printf("%s\n", description);
-}
+

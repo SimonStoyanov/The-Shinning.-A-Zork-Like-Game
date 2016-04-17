@@ -2,7 +2,6 @@
 #define EXIT_H
 
 #include "Entity.h"
-#include "Room.h"
 
 class Room;
 
@@ -11,15 +10,18 @@ private:
 	bool one_way;
 	bool closed;
 	bool locked;
-	p2String opposite_name;
 	Room* destination;
 	Entity* key;
 public:
-	Exit(const char* name, p2String opposite_name, const char* description, Room* origin, Room* destination, bool one_way = false);
+	// Constructor and Destructor
+	Exit(const char* name, const char* description, Room* origin, Room* destination, bool one_way = false);
 	~Exit();
-
-	void Look() const;
-
+	// Methods
+	bool get_OneWay(){ return one_way; }
+	bool ger_Close(){ return closed; }
+	bool get_Locked(){ return locked; }
+	Room* get_Destination(){ return destination; }
+	Entity* get_Key(){ return key; }
 };
 
 

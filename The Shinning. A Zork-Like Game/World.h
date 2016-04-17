@@ -10,11 +10,11 @@
 class Entity;
 class Player;
 
-class World{
+class World : public Entity{
 private:
-	p2Vector<Entity*> entities;
 	Player* player;
 public:
+	p2Vector<Entity*> entities;
 	World();
 	~World();
 
